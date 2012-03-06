@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>Facebook like-trap | jack-shepherd.co.uk</title>
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.2.js'></script>
+  
+
+<style type="text/css">
+#fake /* fake cursor */
+{
+  float:left;
+  position:absolute;
+  z-index:99;
+}
+
+*
+{
+  cursor:none;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+#iFrameSurround
+{
+  float:left;
+  position:relative;
+}
+
+#iFrameCover
+{
+  display:block;
+  height:80px;
+  left:0;
+  position:absolute;
+  top:0;
+  width:400px;
+  z-index:5;
+}
+
+.iframeDiv
+{
+  height:80px;
+  left:0;
+  position:absolute;
+  top:0;
+  width:400px;
+  z-index:1;
+}
+
+.iframe
+{
+  border:none;
+  height:40px;
+  position:absolute;
+  width:50px;
+  z-index:0;
+}
+
+#clickMe
+{
+  left:400px;
+  position:absolute;
+}
+
+#description
+{
+  margin-top:200px;
+}
+</style>
+
+  
+</head>
+<body>
+
+
+
+
+
+  <div id="fake"><img src="xp.png" /></div><br />
+
+
+
+
+<div id="iFrameSurround">
+  <div id="iFrameCover"></div>
+  <div id="iframeDiv">
+    <iframe src="http://www.facebook.com/plugins/like.php?href=http://www.jack-shepherd.co.uk" scrolling="no" frameborder="0" class="iframe"></iframe>
+  </div>
+  <div>
+    <input type="submit" value="clicky" id="clickMe" />
+  </div>
+</div>
+
+
+
+<div id="description">
+
+<h3>Demo: Fake Mouse-pointer Facebook like trap thing</h3>
+<p>Potential improvements</p>
+<ul>
+  <li>Constantly poll Facebook to see whether page has been liked by user, if so, display fake unliked button above iFrame</li>
+  <li>Change mouse cursor depending on operating system version</li>  
+</ul>
+<p><a href="http://www.jack-shepherd.co.uk">...back to Jack-Shepherd.co.uk</a></p>
+</div>
+
+
+  
+  
+<script type='text/javascript'>
+
+$(document).ready(function() { 
+
+  $(document).bind('mousemove', function(e){
+  $('#fake').css({
+     left:  e.pageX + 400,
+     top:   e.pageY
+  });
+  });
+
+
+  $('#iFrameCover').mouseover(function() { 
+
+    hideIt();
+
+  });  
+
+});
+
+
+
+function hideIt()
+{
+  $('#iFrameCover').hide();
+  setTimeout("showIt()",40)  
+}
+
+
+function showIt()
+{
+  $('#iFrameCover').show();
+  setTimeout("hideIt()",1)  
+}
+
+</script>
+
+
+ 
+</body>
+
+
+
+
+</html>
