@@ -63,10 +63,37 @@
   position:absolute;
 }
 
+
+
+/* stuff that's not part of the actual demo */
+
+
+.container
+{
+  width:600px; 
+  height:100%;
+  margin: auto;
+}
+
+
+
 #description
 {
-  margin-top:200px;
+  margin-top:30px;
 }
+
+.strikethrough
+{
+  text-decoration:line-through;
+}
+
+#arrow
+{
+  margin-left:-10px;
+}
+
+
+
 </style>
 
   
@@ -74,10 +101,10 @@
 <body>
 
 
+<div class="container">
 
 
-
-  <div id="fake"><img src="xp.png" /></div><br />
+  <div id="fake"><img id="cursor" src="xp.png" /></div><br />
 
 
 
@@ -95,13 +122,17 @@
 
 
 <div id="description">
+<img src="arrow.png" id="arrow" />
 
 <h3>Demo: Fake Mouse-pointer Facebook like trap thing</h3>
-<p>Potential improvements</p>
+<p>Uses a fake cursor to get the user to click on a Facebook 'like' button. Could probably be used more deviously - perhaps cursor:none isn't a great idea.</p>
+<p>Might take a couple of clicks to work. Also on OSX Chrome requires the cursor to leave the window and re-enter.</p>
+
+<p><strong>To do...</strong></p>
 <ul>
+  <li class="strikethrough">Change mouse cursor depending on operating system</li> 
   <li>Constantly poll Facebook to see whether page has been liked by user, if so, display fake unliked button above iFrame</li>
-  <li>Change mouse cursor depending on operating system version</li> 
-  <li>Make cross browser (only Chrome at the moment)</li> 
+  <li>Better cross browser (only Chrome at the moment)</li> 
   <li>Make it easier for people to click the below links...</li>
 </ul>
 <p><a href="http://www.jack-shepherd.co.uk">...back to Jack-Shepherd.co.uk</a> or <a href="https://github.com/jackshepherd">Fork me on Github</a></p>
@@ -128,6 +159,15 @@ $(document).ready(function() {
 
   });  
 
+  var cursorImage="vista.png";
+  if (navigator.appVersion.indexOf("Win")!=-1) cursorImage="vista.png";
+  if (navigator.appVersion.indexOf("Mac")!=-1) cursorImage="osx.png";
+
+
+  $('#cursor').attr('src', cursorImage)
+
+
+
 });
 
 
@@ -145,8 +185,15 @@ function showIt()
   setTimeout("hideIt()",1)  
 }
 
+
+
+
 </script>
 
+
+
+
+</div>
 
 
 <a href="https://github.com/jackshepherd"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
